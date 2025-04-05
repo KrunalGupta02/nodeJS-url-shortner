@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import connectToMongoDB from "./connect.js";
 import path from "path";
 import staticRouter from "./routes/staticRouter.js";
+import userRoute from "./routes/user.route.js";
+import cookieParser from "cookie-parser";
+import { checkAuth, restrictToLoggedInUserOnly } from "./middleware/auth.js";
 
 dotenv.config();
 
@@ -11,6 +14,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Used to get the form data from the body
+app.use(cookieParser())
 
 const PORT = process.env.PORT || 8001;
 
@@ -31,8 +35,10 @@ connectToMongoDB()
         console.error("MongoDB connection failed !!!", e);
     });
 
-app.use("/url", urlRoute); // All routes are handled inside urlRoute.js
+app.use("/url", restrictToLoggedInUserOnly, urlRoute); // All routes are handled inside urlRoute.js
 
-app.use("/", staticRouter)
+app.use("/", checkAuth, staticRouter);
+
+app.use("/user", userRoute);
 
 export { app };

@@ -19,3 +19,11 @@ GET ```/URL/analytics/:id``` - Returns the clicks for the provided short id.
 We can use the EJS package for the server side rendering in the node js application.
 
 **EJS** stands for Embedded JS Templating.
+
+## Authentication :- 
+
+Types:- 
+
+Statefull => Which maintains state or data or server side 
+
+Stateless => Whihc has no state
