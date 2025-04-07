@@ -26,4 +26,14 @@ Types:-
 
 Statefull => Which maintains state or data or server side 
 
-Stateless => Whihc has no state
+Eg:- Cookies
+
+- Memory Intensive 
+
+- If server restarts then all the users are logged out.
+
+Stateless => Which has no state
+
+Eg:- JWT tokens
+
+Note:- Banking websites always uses session bcz they required to work on that session only.
