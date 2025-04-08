@@ -37,3 +37,12 @@ Stateless => Which has no state
 Eg:- JWT tokens
 
 Note:- Banking websites always uses session bcz they required to work on that session only.
+
+Note: Cookies cannot works on mobile devices 
+
+With cookies we can signin automatically 
+
+For mobiles 
+
+- We can pass the token in the headers  and take it from headers.
+
